@@ -1,33 +1,37 @@
 import java.util.ArrayList;
 
-public class MyIntCollection extends ArrayList<Integer> {
+public class MyIntCollection {
 
+    //encapsulamos un ArrayList cómo un atributo.
+    ArrayList<Integer> numbers;
     private int smallestInt;
     private int largestInt;
     private int total;
 
 
     public MyIntCollection() {
-        //utilizamos super() para aprovechar el código base del constructor original
-        //aunque esta implícita para los constructores de una clase derivada
-        super();
+        //Instanciamos el ArrayList
+        numbers = new ArrayList<Integer>();
         total = 0;
     }
 
+    public int size() {
+        return numbers.size();
+    }
     // método publico sobreescrito
     public boolean add(int i) {
 
-        if (this.isEmpty()) {
+        if (numbers.isEmpty()) {
             smallestInt = i;
             largestInt = i;
-        } else {
+        }
+        else {
             if (i < smallestInt) smallestInt = i;
             if (i > largestInt) largestInt = i;
         }
 
         total = total + i;
-        // regresamos el valor llamando al método original de la clase extendida
-        return super.add(i);
+        return numbers.add(i);
     }
 
 

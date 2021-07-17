@@ -14,6 +14,5 @@ public class MyIntCollectionExample {
         System.out.println("The largest value is: " + mic.getLargestInt());
         System.out.println("The average is: " + mic.getAverage());
 
-
     }
 }
