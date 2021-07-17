@@ -10,27 +10,36 @@ public class WeatherApplication {
         }
     }
 
-    public String solution(String[] datos) {
+    public String solution(String[] data) {
 
-        String name = datos[0];
-        int min = Integer.parseInt(datos[2]);
-        int max = Integer.parseInt(datos[2]);
-        //se crea el objeto tipo weather o la instancia de un objeto
-        // una clase es el como el plano de una casa, hasta que se crea un objeto
+        double min = Double.parseDouble(data[2]);
+        double max = Double.parseDouble(data[2]);
 
-        Weather weather = new Weather(datos[0]);
-        weather.setMin(Double.parseDouble(datos[2]));
-        weather.setMax(Double.parseDouble(datos[2]));
+        for (int i = 2; i < (data.length); i++) {
+            if (Double.parseDouble(data[i]) > max) {
+                max = Double.parseDouble(data[i]);
+            }
+            if (Double.parseDouble(data[i]) < min) {
+                min = Double.parseDouble(data[i]);
+            }
+        }
+
+        Weather weather = new Weather(data[0]);
+        weather.setMax(max);
+        weather.setMin(min);
+
+        return weather.getResultado();
 
     }
 
-    public String[] dividirCadena(String cadena) {
+    public String[] splitString(String cadena) {
         return cadena.split("_");
 
     }
 
-    public String solicitarDatos() {
-        System.out.print("[city_TEMP_minTemp1_maxTemp1 ...] > ");
+    public String requestData() {
+        System.out.print(
+                "[city_TEMP_minTemp1_maxTemp1 ...] > ");
         Scanner stdIn = new Scanner(System.in);
         return stdIn.nextLine();
 
@@ -38,38 +47,44 @@ public class WeatherApplication {
 
     public void principal() throws Exceptioncatch {
 
-        String[] datos = dividirCadena(solicitarDatos());
-
+        String[] datos = splitString(requestData());
         Pattern numberPat = Pattern.compile("[0-9.]+");
 
         if (datos.length < 4) {
-            throw new Exceptioncatch("Incomplete data. Need at least 4 tokens ");
+            throw new Exceptioncatch(
+                    "Incomplete data. Need at least 4 tokens ");
             // Incomplete data. Need at least 4 tokens.
         } else {
             Matcher num = numberPat.matcher(datos[0]);
             if (num.matches() || datos[0].equals("TEMP")) {
-                throw new Exceptioncatch("Missing city before literal TEMP");
+                throw new Exceptioncatch(
+                "Missing city before literal TEMP");
+
             } else {
                 if (!datos[1].equals("TEMP")) {
-                    throw new Exceptioncatch("Missing literal TEMP after city");
-                    // Missing literal TEMP after city
+                    throw new Exceptioncatch(
+                    "Missing literal TEMP after city");
+
                 } else {
                     if ((datos.length) % 2 != 0) {
-                        throw new Exceptioncatch("Missing temperature value. Need min max pairs");
-                        // Missing temperature value. Need min max pairs
+                        throw new Exceptioncatch(
+                        "Missing temperature value. Need min max pairs");
+
                     } else {
                         for (int i = 2; i < (datos.length - 1); i += 2) {
-                            //datos.length - 1 para evitar NullPointerException y comprobamos en pares
-                            if (Integer.parseInt(datos[i]) > Integer.parseInt(datos[i + 1])) {
-                                throw new Exceptioncatch("minTemp " + datos[i] + " > maxTemp " + datos[i + 1]);
-                                // minTemp valor1 > maxTemp valor2
+                            if (Integer.parseInt(datos[i])
+                                > Integer.parseInt(datos[i + 1])) {
+                                throw new Exceptioncatch(
+                                "minTemp " + datos[i] +
+                                " > maxTemp " + datos[i + 1]);
+
                             }
                         }
                     }
                 }
             }
         }
-        //si no ocurre ningún Exception desplegamos el numero mayor y menor
+
         System.out.println(solution(datos));
     }
 
@@ -81,8 +96,8 @@ public class WeatherApplication {
                 break;
 
             } catch (NumberFormatException e) {
-                System.out.println("Error: Incorrect number format: " + e.toString());
-                // Incorrect number format: java.lang.NumberFormatException: For input string
+                System.out.println(
+                "Error: Incorrect number format: " + e.toString());
 
             } catch (Exceptioncatch e) {
                 System.out.println(e.getMessage());

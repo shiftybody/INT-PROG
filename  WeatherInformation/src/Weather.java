@@ -13,7 +13,7 @@ public class Weather {
      }
 
     public void setMax(Double newMax){
-        min = newMax;
+        max = newMax;
     }
 
     public String getCity(){
@@ -31,9 +31,11 @@ public class Weather {
     public String getResultado (){
 
         return  "<city> \n " +
-                "      <name> " + city + "</name> \n " +
-                "      <lowest_temperature> " + min + " </lowest_temperture> \n " +
-                "      <highest_temperature> " + max + " </highest_temperture> \n " +
+                "      <name> " + this.getCity() + " </name> \n " +
+                "      <lowest_temperature> " +
+                       this.getMin() + " </lowest_temperture> \n " +
+                "      <highest_temperature> " +
+                       this.getMax() + " </highest_temperture> \n " +
                 "</city>";
     }
 }
