@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 
-public class MyIntCollection {
+public class MyIntCollection extends Course{
+
 
     //encapsulamos un ArrayList cómo un atributo.
     ArrayList<Integer> numbers;
@@ -45,5 +46,10 @@ public class MyIntCollection {
 
     public double getAverage() {
         return ((double) total) / ((double) this.size());
+    }
+
+    @Override
+    public void establishCourseSchedule(String startDate, String endDate) {
+        System.out.println("hola");
     }
 }
