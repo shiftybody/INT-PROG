@@ -1,5 +1,5 @@
 public class Professor implements Teacher {
-    void setDepartment(String message){
-        System.out.println(message);
+    void setDepartment(){
+        System.out.println("hello");
     };
 }
