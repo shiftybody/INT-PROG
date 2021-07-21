@@ -1,2 +1,3 @@
-public class Student implements Teacher {
+public class Student extends Person  {
+
 }

@@ -1,5 +1,4 @@
-public class Professor implements Teacher {
-    void setDepartment(){
-        System.out.println("hello");
-    };
+public class Professor extends Person implements Teacher {
+
+
 }

@@ -1,3 +1,3 @@
-public interface Teacher {
+public interface Teacher  {
 
 }
