@@ -3,10 +3,9 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class NumerosRomanos {
-    // Este caso cae en excepciones como por ejejmplo no validar una cantidad de
-    // de veces que podemos recibir una literal
 
-    public void Principal() throws Exception {
+
+    public void convertir() throws Exception {
         System.out.print("Ingrese el número Romano que desea convertir: ");
         Scanner stdIn = new Scanner(System.in);
         String secuens =stdIn.nextLine();
@@ -69,7 +68,6 @@ public class NumerosRomanos {
 
         } else {
             throw new Exception("e");
-
         }
 
 
@@ -80,7 +78,7 @@ public class NumerosRomanos {
         while(true){
             try{
                 NumerosRomanos num = new NumerosRomanos();
-                num.Principal();
+                num.convertir();
                 break;
 
             }catch (Exception e){
